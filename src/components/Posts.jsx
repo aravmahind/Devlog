@@ -36,10 +36,10 @@ function Posts() {
     return (
         <>
         <div className="m-23">
-            <input type="text" className="w-full border-1" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter the Title..." required></input><br></br>
-            <input type="text" className="w-full border-1" value={desc} onChange={(e) => setDesc(e.target.value)} placeholder="Enter the Description..."></input><br></br>
-            <textarea rows={8} className="w-full border-1" value={post} onChange={(e) => setPost(e.target.value)} placeholder="Post here..." required></textarea><br></br>
-            <button className="border-1 p-3 bg-emerald-700 text-white" disabled={!title || !post} onClick={handlePost}>Post</button>
+            <input type="text" className="w-full border-1 p-1 m-1" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter the Title..." required></input><br></br>
+            <input type="text" className="w-full border-1 p-1 m-1" value={desc} onChange={(e) => setDesc(e.target.value)} placeholder="Enter the Description..."></input><br></br>
+            <textarea rows={8} className="w-full border-1 p-1 m-1 resize-none" value={post} onChange={(e) => setPost(e.target.value)} placeholder="Post here..." required></textarea><br></br>
+            <button className="border-1 p-3 m-1 bg-emerald-700 text-white" disabled={!title || !post} onClick={handlePost}>Post</button>
         </div>
 
         {posts.length > 0 && ( 
