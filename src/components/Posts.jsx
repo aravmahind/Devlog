@@ -1,6 +1,7 @@
-import { useState } from "react"
-import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
-import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { useState, useEffect } from "react"
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import axios from 'axios';
 
 function AddPost({t, d, p}) {
     return (
@@ -20,6 +21,11 @@ function Posts() {
     const [post, setPost] = useState("");
     const [posts, setPosts] = useState([]);
 
+    useEffect(() => {
+        axios.get('http://localhost:5000/posts')
+        .then((res) => setPosts(...posts, res.data));
+    }, []);
+
     function handlePost() {
         const newPost = {
             title,
@@ -27,7 +33,9 @@ function Posts() {
             post
         };
 
-        setPosts([...posts, newPost]);
+        axios.post('http://localhost:5000/posts', newPost)
+        .then((res) => setPosts([...posts, res.data]));
+
         setTitle('');
         setDesc('');
         setPost('');
